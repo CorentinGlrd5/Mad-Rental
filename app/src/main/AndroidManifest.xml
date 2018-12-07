@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:label="MadRental">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,6 +19,17 @@
             </intent-filter>
         </activity>
         <activity android:name=".Reservation"></activity>
+        <activity
+            android:name=".Profil"
+            android:label="Mon profil"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ReservationEtape1"
+            android:label="Reservation - étape 1 / 2" />
+        <activity
+            android:name=".ReservationEtape2"
+            android:label="Reservation - étape 2 / 2"
+            android:parentActivityName=".ReservationEtape1"></activity>
     </application>
 
 </manifest>

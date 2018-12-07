@@ -1,9 +1,11 @@
 <resources>
-    <string name="app_name">Mad-Rental</string>
+    <string name="app_name">Mad Rental</string>
     <string name="app_button_name_reservation">Mes réservations</string>
     <string name="app_button_name_monProfil">Mon profil</string>
     <string name="app_textView_name_recherche">Lancer une recherche :</string>
     <string name="app_button_name_recherche">Rechercher</string>
     <string name="app_button_name_valide">Valider</string>
     <string name="app_button_name_suivant">Suivant</string>
+    <string name="title_activity_profil">Profil</string>
+    <string name="Profil_textView_name_renseignement">Merci de renseigner votre profil :</string>
 </resources>

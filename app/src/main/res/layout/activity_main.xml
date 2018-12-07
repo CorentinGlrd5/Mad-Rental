@@ -7,67 +7,84 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/pageHome_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/marginTop_champs_text"
         android:text="@string/app_name"
         android:textAlignment="center"
+        android:textColor="@color/colorTitle"
         android:textSize="@dimen/text_size_title" />
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginHorizontal="25dp"
-        android:layout_marginTop="30dp"
+        android:layout_height="@dimen/layout_height_button"
+        android:layout_marginHorizontal="@dimen/layout_marginHorizontal_button"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/button"
+        android:onClick="MesReservations"
         android:text="@string/app_button_name_reservation"
+        android:textAllCaps="false"
         android:textColor="@color/colorWhite"
-        android:textSize="@dimen/text_size_button" />
+        android:textSize="@dimen/text_size_button"
+        android:textStyle="bold" />
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginHorizontal="25dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="@dimen/layout_height_button"
+        android:layout_marginHorizontal="@dimen/layout_marginHorizontal_button"
+        android:layout_marginTop="@dimen/layout_marginTop_Button_between_button"
+        android:background="@drawable/button"
+        android:onClick="MonProfil"
         android:text="@string/app_button_name_monProfil"
+        android:textAllCaps="false"
         android:textColor="@color/colorWhite"
-        android:textSize="@dimen/text_size_button" />
+        android:textSize="@dimen/text_size_button"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="70dp"
         android:text="@string/app_textView_name_recherche"
         android:textAlignment="center"
+        android:textColor="@color/colorBlack"
         android:textSize="@dimen/text_size_champs_text" />
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="15dp"
-        android:background="@android:color/darker_gray"
+        android:layout_height="@dimen/layout_height_edit_text"
+        android:layout_marginHorizontal="@dimen/layout_marginHorizontal_EditText"
+        android:layout_marginTop="@dimen/layout_marginTop_EditText_between_EditText"
+        android:background="@drawable/input"
         android:hint="Date de début de réservation"
         android:inputType="text"
+        android:paddingLeft="@dimen/layout_PaddingLeft_EditText"
         android:textSize="@dimen/text_size_button" />
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="15dp"
-        android:background="@android:color/darker_gray"
+        android:layout_height="@dimen/layout_height_edit_text"
+        android:layout_marginHorizontal="@dimen/layout_marginHorizontal_EditText"
+        android:layout_marginTop="@dimen/layout_marginTop_EditText_between_EditText"
+        android:background="@drawable/input"
         android:hint="Date de fin de réservation"
         android:inputType="text"
+        android:paddingLeft="@dimen/layout_PaddingLeft_EditText"
         android:textSize="@dimen/text_size_button" />
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginHorizontal="25dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="@dimen/layout_height_button"
+        android:layout_marginHorizontal="@dimen/layout_marginHorizontal_button"
+        android:layout_marginTop="@dimen/layout_marginTop_Button_between_button"
+        android:background="@drawable/button"
+        android:onClick="Recherche"
         android:text="@string/app_button_name_recherche"
+        android:textAllCaps="false"
         android:textColor="@color/colorWhite"
-        android:textSize="@dimen/text_size_button" />
+        android:textSize="@dimen/text_size_button"
+        android:textStyle="bold" />
 
 
 </LinearLayout>

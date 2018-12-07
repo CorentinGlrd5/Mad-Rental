@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="text_size_title">40dp</dimen>
-    <dimen name="text_size_button">20dp</dimen>
-    <dimen name="text_size_champs_text">15dp</dimen>
-    <dimen name="marginTop_champs_text">30dp</dimen>
-
+    <dimen name="text_size_title">50dp</dimen>
+    <dimen name="text_size_button">25dp</dimen>
+    <dimen name="text_size_champs_text">20dp</dimen>
+    <dimen name="marginTop_champs_text">40dp</dimen>
+    <dimen name="layout_height_button">50dp</dimen>
+    <dimen name="layout_height_edit_text">50dp</dimen>
+    <dimen name="layout_marginHorizontal_button">40dp</dimen>
+    <dimen name="layout_marginHorizontal_EditText">20dp</dimen>
+    <dimen name="layout_marginTop_Button_between_button">20dp</dimen>
+    <dimen name="layout_marginTop_EditText_between_EditText">20dp</dimen>
+    <dimen name="layout_PaddingLeft_EditText">25dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>
