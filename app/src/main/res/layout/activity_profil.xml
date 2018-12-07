@@ -6,59 +6,73 @@
     android:orientation="vertical"
     tools:context=".Profil">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="70dp"
-        android:layout_marginTop="70dp"
-        android:text="@string/Profil_textView_name_renseignement"
-        android:textAlignment="center"
-        android:textColor="@color/colorBlack"
-        android:textSize="25dp" />
+        android:layout_height="match_parent">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/layout_height_edit_text"
-        android:layout_marginHorizontal="@dimen/layout_marginHorizontal_EditText"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/input"
-        android:hint="Nom"
-        android:inputType="text"
-        android:paddingLeft="@dimen/layout_PaddingLeft_EditText"
-        android:textSize="@dimen/text_size_button" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="25dp">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/layout_height_edit_text"
-        android:layout_marginHorizontal="@dimen/layout_marginHorizontal_EditText"
-        android:layout_marginTop="@dimen/layout_marginTop_EditText_between_EditText"
-        android:background="@drawable/input"
-        android:hint="Prénom"
-        android:inputType="text"
-        android:paddingLeft="@dimen/layout_PaddingLeft_EditText"
-        android:textSize="@dimen/text_size_button" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="70dp"
+                android:layout_marginTop="70dp"
+                android:text="@string/Profil_textView_name_renseignement"
+                android:textAlignment="center"
+                android:textColor="@color/colorBlack"
+                android:textSize="25dp" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/layout_height_edit_text"
-        android:layout_marginHorizontal="@dimen/layout_marginHorizontal_EditText"
-        android:layout_marginTop="@dimen/layout_marginTop_EditText_between_EditText"
-        android:background="@drawable/input"
-        android:hint="Date de naissance"
-        android:inputType="text"
-        android:paddingLeft="@dimen/layout_PaddingLeft_EditText"
-        android:textSize="@dimen/text_size_button" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height_edit_text"
+                android:layout_marginHorizontal="@dimen/layout_marginHorizontal_EditText"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/input"
+                android:hint="Nom"
+                android:inputType="text"
+                android:paddingLeft="@dimen/layout_PaddingLeft_EditText"
+                android:textSize="@dimen/text_size_button" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/layout_height_button"
-        android:layout_marginHorizontal="@dimen/layout_marginHorizontal_button"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/button"
-        android:text="@string/app_button_name_valide"
-        android:textAllCaps="false"
-        android:textColor="@color/colorWhite"
-        android:textSize="@dimen/text_size_button"
-        android:textStyle="bold" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height_edit_text"
+                android:layout_marginHorizontal="@dimen/layout_marginHorizontal_EditText"
+                android:layout_marginTop="@dimen/layout_marginTop_EditText_between_EditText"
+                android:background="@drawable/input"
+                android:hint="Prénom"
+                android:inputType="text"
+                android:paddingLeft="@dimen/layout_PaddingLeft_EditText"
+                android:textSize="@dimen/text_size_button" />
 
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height_edit_text"
+                android:layout_marginHorizontal="@dimen/layout_marginHorizontal_EditText"
+                android:layout_marginTop="@dimen/layout_marginTop_EditText_between_EditText"
+                android:background="@drawable/input"
+                android:hint="Date de naissance"
+                android:inputType="text"
+                android:paddingLeft="@dimen/layout_PaddingLeft_EditText"
+                android:textSize="@dimen/text_size_button" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height_button"
+                android:layout_marginHorizontal="@dimen/layout_marginHorizontal_button"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/button"
+                android:onClick="validerProfil"
+                android:text="@string/app_button_name_valide"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/text_size_button"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
+
+

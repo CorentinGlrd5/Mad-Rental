@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void MesReservations(View view) {
-        Intent intent = new Intent(this, Profil.class);
+        Intent intent = new Intent(this, ReservationEtape1.class);
         startActivity(intent);
 
     }
