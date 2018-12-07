@@ -7,8 +7,7 @@
     <ImageView
         android:id="@+id/img"
         android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:background="#8E24AA" />
+        android:layout_height="150dp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,26 +17,23 @@
         <TextView
             android:id="@+id/vehicles_info"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="#81C784"
+            android:layout_height="wrap_content"
             android:text="Buggy - 194€"
             android:paddingLeft="10dp"
             android:gravity="center_vertical"
             android:textSize="25dp" />
         <TextView
             android:id="@+id/begin_date"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:background="#4CAF50"
             android:text="début: 19/12/2018"
             android:paddingLeft="10dp"
             android:gravity="center_vertical"
             android:textSize="15dp" />
         <TextView
             android:id="@+id/end_date"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:background="#7CB342"
             android:text="fin: 25/12/2018"
             android:paddingLeft="10dp"
             android:gravity="center_vertical"

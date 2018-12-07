@@ -3,12 +3,14 @@ package com.corentin.mad_rental;
 public class Vehicle {
     private String name;
     private String price;
+    private String image;
     private String beginDate;
     private String endDate;
 
-    public Vehicle(String name, String price, String beginDate, String endDate) {
+    public Vehicle(String name, String price, String image, String beginDate, String endDate) {
         this.name = name;
         this.price = price;
+        this.image = image;
         this.beginDate = beginDate;
         this.endDate = endDate;
     }
@@ -27,6 +29,14 @@ public class Vehicle {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getBeginDate() {
