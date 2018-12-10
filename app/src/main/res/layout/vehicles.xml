@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="#ffffff"
     android:orientation="horizontal"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView
-        android:id="@+id/img"
+        android:id="@+id/vehicule_img"
         android:layout_width="150dp"
         android:layout_height="150dp" />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="match_parent
+"
         android:orientation="vertical"
-        android:layout_gravity="fill_vertical"
-        android:layout_margin="0dp">
+        android:layout_gravity="fill_vertical">
         <TextView
-            android:id="@+id/vehicles_info"
+            android:id="@+id/vehicle_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:text="Buggy - 194€"
             android:paddingLeft="10dp"
             android:gravity="center_vertical"
-            android:textSize="25dp" />
+            android:textSize="20dp" />
         <TextView
-            android:id="@+id/begin_date"
+            android:id="@+id/vehicule_firstinfo"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:text="début: 19/12/2018"
@@ -31,7 +31,7 @@
             android:gravity="center_vertical"
             android:textSize="15dp" />
         <TextView
-            android:id="@+id/end_date"
+            android:id="@+id/vehicule_secondinfo"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:text="fin: 25/12/2018"

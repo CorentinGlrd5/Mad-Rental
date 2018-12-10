@@ -1,18 +1,44 @@
 package com.corentin.mad_rental;
 
-public class Vehicle {
-    private String name;
-    private String price;
-    private String image;
-    private String beginDate;
-    private String endDate;
+import com.google.gson.annotations.SerializedName;
 
-    public Vehicle(String name, String price, String image, String beginDate, String endDate) {
+import java.util.List;
+
+public class Vehicle {
+    private int id;
+    @SerializedName("nom")
+    private String name;
+    private String image;
+    @SerializedName("disponible")
+    private int availability;
+    @SerializedName("prixjournalierbase")
+    private String price;
+    private String promotion;
+    private int agemin;
+    private char categorieco2;
+    @SerializedName("equipements")
+    private List<Equipments> equipments;
+    private List<Options> options;
+
+    public Vehicle(int id, String name, String image, int availability, String price, String promotion, int agemin, char categorieco2, List<Equipments> equipments, List<Options> options) {
+        this.id = id;
         this.name = name;
-        this.price = price;
         this.image = image;
-        this.beginDate = beginDate;
-        this.endDate = endDate;
+        this.availability = availability;
+        this.price = price;
+        this.promotion = promotion;
+        this.agemin = agemin;
+        this.categorieco2 = categorieco2;
+        this.equipments = equipments;
+        this.options = options;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -23,14 +49,6 @@ public class Vehicle {
         this.name = name;
     }
 
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
     public String getImage() {
         return image;
     }
@@ -39,19 +57,59 @@ public class Vehicle {
         this.image = image;
     }
 
-    public String getBeginDate() {
-        return beginDate;
+    public int getAvailability() {
+        return availability;
     }
 
-    public void setBeginDate(String beginDate) {
-        this.beginDate = beginDate;
+    public void setAvailability(int availability) {
+        this.availability = availability;
     }
 
-    public String getEndDate() {
-        return endDate;
+    public String getPrice() {
+        return price;
     }
 
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getPromotion() {
+        return promotion;
+    }
+
+    public void setPromotion(String promotion) {
+        this.promotion = promotion;
+    }
+
+    public int getAgemin() {
+        return agemin;
+    }
+
+    public void setAgemin(int agemin) {
+        this.agemin = agemin;
+    }
+
+    public char getCategorieco2() {
+        return categorieco2;
+    }
+
+    public void setCategorieco2(char categorieco2) {
+        this.categorieco2 = categorieco2;
+    }
+
+    public List<Equipments> getEquipments() {
+        return equipments;
+    }
+
+    public void setEquipments(List<Equipments> equipments) {
+        this.equipments = equipments;
+    }
+
+    public List<Options> getOptions() {
+        return options;
+    }
+
+    public void setOptions(List<Options> options) {
+        this.options = options;
     }
 }

@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void MesReservations(View view) {
-        Intent intent = new Intent(this, Reservation.class);
+        Intent intent = new Intent(this, Search.class);
         startActivity(intent);
 
     }

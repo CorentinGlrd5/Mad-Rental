@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Reservation"></activity>
+        <activity android:name=".Reservation" />
         <activity
             android:name=".Profil"
             android:label="Mon profil"
@@ -33,7 +33,8 @@
         <activity
             android:name=".ReservationEtape2"
             android:label="Reservation - étape 2 / 2"
-            android:parentActivityName=".ReservationEtape1"></activity>
+            android:parentActivityName=".ReservationEtape1" />
+        <activity android:name=".Search"></activity>
     </application>
 
 </manifest>

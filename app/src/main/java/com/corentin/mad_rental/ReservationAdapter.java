@@ -1,8 +1,6 @@
 package com.corentin.mad_rental;
 
 import android.content.Context;
-import android.net.Uri;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,8 +30,8 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationViewHold
     public void onBindViewHolder(ReservationViewHolder holder, int position) {
         Vehicle vehicle = reservationList.get(position);
         holder.info.setText(vehicle.getName() + " - " + vehicle.getPrice());
-        holder.beginDate.setText("début: " + vehicle.getBeginDate());
-        holder.endDate.setText("fin: " + vehicle.getEndDate());
+        holder.beginDate.setText("début: " + vehicle.getAgemin());
+        holder.endDate.setText("fin: " + vehicle.getPromotion());
         Glide.with(context).load(vehicle.getImage()).into(holder.image);
     }
 
