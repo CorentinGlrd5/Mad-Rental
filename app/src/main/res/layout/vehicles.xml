@@ -10,8 +10,7 @@
         android:layout_height="150dp" />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent
-"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_gravity="fill_vertical">
         <TextView
@@ -24,7 +23,7 @@
             android:textSize="20dp" />
         <TextView
             android:id="@+id/vehicule_firstinfo"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="début: 19/12/2018"
             android:paddingLeft="10dp"
@@ -32,7 +31,7 @@
             android:textSize="15dp" />
         <TextView
             android:id="@+id/vehicule_secondinfo"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="fin: 25/12/2018"
             android:paddingLeft="10dp"

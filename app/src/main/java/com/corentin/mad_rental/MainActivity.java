@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void MesReservations(View view) {
-        Intent intent = new Intent(this, Search.class);
+        Intent intent = new Intent(this, Reservation.class);
         startActivity(intent);
 
     }
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Recherche(View view) {
-        Intent intent = new Intent(this, Profil.class);
+        Intent intent = new Intent(this, Search.class);
         startActivity(intent);
     }
 }

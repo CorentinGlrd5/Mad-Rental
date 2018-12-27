@@ -17,10 +17,10 @@ public class Vehicle {
     private int agemin;
     private char categorieco2;
     @SerializedName("equipements")
-    private List<Equipments> equipments;
-    private List<Options> options;
+    private List<Equipment> equipments;
+    private List<Option> options;
 
-    public Vehicle(int id, String name, String image, int availability, String price, String promotion, int agemin, char categorieco2, List<Equipments> equipments, List<Options> options) {
+    public Vehicle(int id, String name, String image, int availability, String price, String promotion, int agemin, char categorieco2, List<Equipment> equipments, List<Option> options) {
         this.id = id;
         this.name = name;
         this.image = image;
@@ -97,19 +97,19 @@ public class Vehicle {
         this.categorieco2 = categorieco2;
     }
 
-    public List<Equipments> getEquipments() {
+    public List<Equipment> getEquipments() {
         return equipments;
     }
 
-    public void setEquipments(List<Equipments> equipments) {
+    public void setEquipments(List<Equipment> equipments) {
         this.equipments = equipments;
     }
 
-    public List<Options> getOptions() {
+    public List<Option> getOptions() {
         return options;
     }
 
-    public void setOptions(List<Options> options) {
+    public void setOptions(List<Option> options) {
         this.options = options;
     }
 }

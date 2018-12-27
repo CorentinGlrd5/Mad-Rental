@@ -43,7 +43,6 @@ public class Search extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, String response) {
                 // called when response HTTP status is "200 OK"
                 Type listType = new TypeToken<List<Vehicle>>(){}.getType();
-                Log.i("try", response);
                 List<Vehicle> searchList = gson.fromJson(response, listType);
                 adapter = new SearchAdapter(searchList, getApplicationContext());
                 recyclerView.setAdapter(adapter);
