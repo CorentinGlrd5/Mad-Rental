@@ -12,9 +12,11 @@ import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.io.Serializable;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ReservationItem extends AppCompatActivity {
@@ -22,8 +24,8 @@ public class ReservationItem extends AppCompatActivity {
     TextView title, rent, category;
     ImageView thumbnail;
     Button submit;
-    int id;
-    String name, image, price;
+    int id, price;
+    String name, image;
     char categoryco2;
     List<Equipment> equipment;
     List<Option> option;
@@ -44,7 +46,7 @@ public class ReservationItem extends AppCompatActivity {
         thumbnail = findViewById(R.id.item_image);
         Glide.with(getApplicationContext()).load(image).into(thumbnail);
 
-        price = intent.getStringExtra("price");
+        price = intent.getIntExtra("price", 0);
         rent = findViewById(R.id.item_price);
         rent.setText(price + " € / jour");
         categoryco2 = intent.getCharExtra("categoryco2", 'h');
@@ -83,14 +85,17 @@ public class ReservationItem extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                List<Integer> optionPrice = new ArrayList<Integer>();
                 Intent intent = new Intent(ReservationItem.this, ReservationFinal.class);
                 intent.putExtra("price", price);
                 for (Option item: option){
                     int id = getResources().getIdentifier(String.valueOf(item.getId()), "id", getPackageName());
                     Switch sw = findViewById(id);
-                    intent.putExtra("price"+item.getId(), item.getPrice());
-                    Log.i("montag", "price"+item.getId());
+                    if(sw.isChecked()){
+                        optionPrice.add(Integer.valueOf(item.getPrice()));
+                    }
                 }
+                intent.putExtra("option", (Serializable) optionPrice);
                 startActivity(intent);
             }
         });

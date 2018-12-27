@@ -12,7 +12,7 @@ public class Vehicle {
     @SerializedName("disponible")
     private int availability;
     @SerializedName("prixjournalierbase")
-    private String price;
+    private int price;
     private String promotion;
     private int agemin;
     private char categorieco2;
@@ -20,7 +20,7 @@ public class Vehicle {
     private List<Equipment> equipments;
     private List<Option> options;
 
-    public Vehicle(int id, String name, String image, int availability, String price, String promotion, int agemin, char categorieco2, List<Equipment> equipments, List<Option> options) {
+    public Vehicle(int id, String name, String image, int availability, int price, String promotion, int agemin, char categorieco2, List<Equipment> equipments, List<Option> options) {
         this.id = id;
         this.name = name;
         this.image = image;
@@ -65,11 +65,11 @@ public class Vehicle {
         this.availability = availability;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

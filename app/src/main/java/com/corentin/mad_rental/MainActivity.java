@@ -54,17 +54,17 @@ public class MainActivity extends AppCompatActivity {
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                beginDate = findViewById(R.id.begin_date);
-                beginDateText = beginDate.getText().toString();
-                endDate = findViewById(R.id.end_date);
-                endDateText = endDate.getText().toString();
-                if (checkDate(beginDateText) || checkDate(endDateText)) {
+//                beginDate = findViewById(R.id.begin_date);
+//                beginDateText = beginDate.getText().toString();
+//                endDate = findViewById(R.id.end_date);
+//                endDateText = endDate.getText().toString();
+//                if (checkDate(beginDateText) || checkDate(endDateText)) {
                     Intent intent = new Intent(MainActivity.this, Search.class);
                     startActivity(intent);
-                } else {
-                    Toast toast = Toast.makeText(MainActivity.this, "Date non valide", Toast.LENGTH_LONG);
-                    toast.show();
-                }
+//                } else {
+//                    Toast toast = Toast.makeText(MainActivity.this, "Date non valide", Toast.LENGTH_LONG);
+//                    toast.show();
+//                }
             }
         });
     }
