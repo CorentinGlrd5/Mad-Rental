@@ -9,6 +9,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static com.corentin.mad_rental.Profil.NOM;
+
 public class ReservationEtape1 extends AppCompatActivity {
     Switch simpleSwitch1, simpleSwitch2;
     TextView textView, textView2;
@@ -45,10 +47,16 @@ public class ReservationEtape1 extends AppCompatActivity {
                 TextView textView = findViewById(R.id.textView);
                 textView.isSelected();
                 Intent intent = new Intent(ReservationEtape1.this, ReservationEtape2.class);
-                //intent.putExtra("Valeur", );
+                intent.putExtra("ValeurSwitch1", valueTextView);
+                intent.putExtra("ValeurSwitch2", valueTextView2);
                 startActivity(intent);
             }
         });
+    }
+
+    public void suivantReserve1(View view) {
+        Intent intent = new Intent(this, ReservationEtape2.class);
+        startActivity(intent);
     }
 }
 

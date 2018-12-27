@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:orientation="vertical"
     tools:context=".Profil">
 
@@ -27,6 +30,7 @@
                 android:textSize="25dp" />
 
             <EditText
+                android:id="@+id/Nom"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/layout_height_edit_text"
                 android:layout_marginHorizontal="@dimen/layout_marginHorizontal_EditText"
@@ -38,6 +42,7 @@
                 android:textSize="@dimen/text_size_button" />
 
             <EditText
+                android:id="@+id/Prenom"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/layout_height_edit_text"
                 android:layout_marginHorizontal="@dimen/layout_marginHorizontal_EditText"
@@ -49,13 +54,14 @@
                 android:textSize="@dimen/text_size_button" />
 
             <EditText
+                android:id="@+id/Date"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/layout_height_edit_text"
                 android:layout_marginHorizontal="@dimen/layout_marginHorizontal_EditText"
                 android:layout_marginTop="@dimen/layout_marginTop_EditText_between_EditText"
                 android:background="@drawable/input"
                 android:hint="Date de naissance"
-                android:inputType="text"
+                android:inputType="date"
                 android:paddingLeft="@dimen/layout_PaddingLeft_EditText"
                 android:textSize="@dimen/text_size_button" />
 
