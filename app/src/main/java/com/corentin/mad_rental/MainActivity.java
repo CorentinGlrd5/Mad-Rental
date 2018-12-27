@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -54,30 +55,37 @@ public class MainActivity extends AppCompatActivity {
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                beginDate = findViewById(R.id.begin_date);
-//                beginDateText = beginDate.getText().toString();
-//                endDate = findViewById(R.id.end_date);
-//                endDateText = endDate.getText().toString();
-//                if (checkDate(beginDateText) || checkDate(endDateText)) {
+                beginDate = findViewById(R.id.begin_date);
+                beginDateText = beginDate.getText().toString();
+                endDate = findViewById(R.id.end_date);
+                endDateText = endDate.getText().toString();
+                if (checkDate(beginDateText, endDateText)) {
                     Intent intent = new Intent(MainActivity.this, Search.class);
                     startActivity(intent);
-//                } else {
-//                    Toast toast = Toast.makeText(MainActivity.this, "Date non valide", Toast.LENGTH_LONG);
-//                    toast.show();
-//                }
+                } else {
+                    Toast toast = Toast.makeText(MainActivity.this, "Date non valide", Toast.LENGTH_LONG);
+                    toast.show();
+                }
             }
         });
     }
 
-    // Ajouter une verification pour voir si les dates se suivent et une verif pour voir si la date est passée
-    public Boolean checkDate (String date){
-        if (date == null || !date.matches("^(1[0-9]|0[1-9]|3[0-1]|2[1-9])/(0[1-9]|1[0-2])/[0-9]{4}$")) {
+    public Boolean checkDate (String date1, String date2){
+        String regex = "^(1[0-9]|0[1-9]|3[0-1]|2[1-9])/(0[1-9]|1[0-2])/[0-9]{4}$";
+        if (date1 == null || !date1.matches(regex) || date2 == null || !date2.matches(regex)) {
             return false;
         } else {
-            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             try {
-                format.parse(date);
-                return true;
+                Date firstDate = sdf.parse(date1);
+                Date lastDate = sdf.parse(date2);
+                Date date = new Date();
+                String today = sdf.format(date);
+                if (firstDate.compareTo(lastDate) >= 0 || firstDate.compareTo(sdf.parse(today)) < 0 || lastDate.compareTo(sdf.parse(today)) < 0){
+                    return false;
+                } else {
+                    return true;
+                }
             } catch (ParseException e){
                 return false;
             }
