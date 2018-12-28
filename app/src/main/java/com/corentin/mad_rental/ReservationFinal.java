@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ReservationFinal extends AppCompatActivity {
 
-    Integer price, total;
+    Integer price, total, diff;
     List<Integer> optionPrice;
     TextView totalContainer;
 
@@ -21,7 +21,8 @@ public class ReservationFinal extends AppCompatActivity {
         setContentView(R.layout.activity_reservation_final);
         Intent intent = getIntent();
         price = intent.getIntExtra("price", 0);
-        total = price;
+        diff = intent.getIntExtra("diff", 0);
+        total = price * diff;
         optionPrice = (List<Integer>) intent.getSerializableExtra("option");
         for (Integer itemPrice : optionPrice){
             total += itemPrice;

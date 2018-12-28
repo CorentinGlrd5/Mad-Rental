@@ -1,5 +1,6 @@
 package com.corentin.mad_rental;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,18 +25,22 @@ public class Search extends AppCompatActivity {
     private RecyclerView recyclerView;
     private SearchAdapter adapter;
     private List<Vehicle> searchList = new ArrayList<>();
+    private Integer diff;
+    private String beginDate, endDate;
     private Gson gson;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        Intent intent = getIntent();
+        diff = intent.getIntExtra("diff", 0);
+        beginDate = intent.getStringExtra("beginDate");
+        endDate = intent.getStringExtra("endDate");
         gson = new Gson();
         recyclerView = findViewById(R.id.search_list);
         recyclerView.setHasFixedSize(true);
-        adapter = new SearchAdapter(searchList, getApplicationContext());
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
 
         AsyncHttpClient client = new AsyncHttpClient();
         client.get("http://s519716619.onlinehome.fr/exchange/madrental/get-vehicules.php", new TextHttpResponseHandler() {
@@ -44,7 +49,7 @@ public class Search extends AppCompatActivity {
                 // called when response HTTP status is "200 OK"
                 Type listType = new TypeToken<List<Vehicle>>(){}.getType();
                 List<Vehicle> searchList = gson.fromJson(response, listType);
-                adapter = new SearchAdapter(searchList, getApplicationContext());
+                adapter = new SearchAdapter(searchList, getApplicationContext(), beginDate, endDate, diff);
                 recyclerView.setAdapter(adapter);
             }
             @Override

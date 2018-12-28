@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -59,8 +60,12 @@ public class MainActivity extends AppCompatActivity {
                 beginDateText = beginDate.getText().toString();
                 endDate = findViewById(R.id.end_date);
                 endDateText = endDate.getText().toString();
-                if (checkDate(beginDateText, endDateText)) {
+                Integer days = diffDate(beginDateText, endDateText);
+                if (checkDate(beginDateText, endDateText) && days != 0) {
                     Intent intent = new Intent(MainActivity.this, Search.class);
+                    intent.putExtra("beginDate", beginDateText);
+                    intent.putExtra("endDate", endDateText);
+                    intent.putExtra("diff", days);
                     startActivity(intent);
                 } else {
                     Toast toast = Toast.makeText(MainActivity.this, "Date non valide", Toast.LENGTH_LONG);
@@ -91,5 +96,19 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         }
+    }
+
+    public Integer diffDate(String date1, String date2) {
+        Integer days = 0;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            Date firstDate = sdf.parse(date1);
+            Date lastDate = sdf.parse(date2);
+            long diff = lastDate.getTime() - firstDate.getTime();
+            days = (int) (long) diff / (1000 * 60 * 60 * 24);
+        } catch (ParseException e){
+            Log.i("ParseException", "diffDate: "+e);
+        }
+        return days;
     }
 }

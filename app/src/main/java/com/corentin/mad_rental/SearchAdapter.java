@@ -17,10 +17,15 @@ import java.util.List;
 public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
     private List<Vehicle> searchList;
     private Context context;
+    private Integer diff;
+    private String beginDate, endDate;
 
-    public SearchAdapter (List<Vehicle> searchList, Context context){
+    public SearchAdapter (List<Vehicle> searchList, Context context, String beginDate, String endDate, Integer diff){
         this.searchList = searchList;
         this.context = context;
+        this.beginDate = beginDate;
+        this.endDate = endDate;
+        this.diff = diff;
     }
 
     @Override
@@ -57,6 +62,9 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
                 intent.putExtra("categoryco2", vehicle.getCategorieco2());
                 intent.putExtra("equipments", (Serializable) vehicle.getEquipments());
                 intent.putExtra("options", (Serializable) vehicle.getOptions());
+                intent.putExtra("beginDate", beginDate);
+                intent.putExtra("endDate", endDate);
+                intent.putExtra("diff", diff);
                 holder.itemView.getContext().startActivity(intent);
             }
         });

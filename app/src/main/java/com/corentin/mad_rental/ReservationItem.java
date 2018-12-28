@@ -25,7 +25,8 @@ public class ReservationItem extends AppCompatActivity {
     ImageView thumbnail;
     Button submit;
     int id, price;
-    String name, image;
+    String name, image, beginDate, endDate;
+    Integer diff;
     char categoryco2;
     List<Equipment> equipment;
     List<Option> option;
@@ -37,6 +38,15 @@ public class ReservationItem extends AppCompatActivity {
         Intent intent = getIntent();
 
         id = intent.getIntExtra("id", 0);
+
+        diff = intent.getIntExtra("diff", 0);
+        beginDate = intent.getStringExtra("beginDate");
+        endDate = intent.getStringExtra("endDate");
+
+        Log.i("montag", "diff: "+ diff);
+        Log.i("montag", "beginDate: "+ beginDate);
+        Log.i("montag", "endDate: "+ endDate);
+
 
         name = intent.getStringExtra("name");
         title = findViewById(R.id.item_title);
@@ -88,6 +98,7 @@ public class ReservationItem extends AppCompatActivity {
                 List<Integer> optionPrice = new ArrayList<Integer>();
                 Intent intent = new Intent(ReservationItem.this, ReservationFinal.class);
                 intent.putExtra("price", price);
+                intent.putExtra("diff", diff);
                 for (Option item: option){
                     int id = getResources().getIdentifier(String.valueOf(item.getId()), "id", getPackageName());
                     Switch sw = findViewById(id);
