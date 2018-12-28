@@ -1,14 +1,17 @@
 package com.corentin.mad_rental;
 
-public class Options {
-    private int id;
-    private String name;
-    private int price;
+import com.google.gson.annotations.SerializedName;
 
-    public Options(int id, String name,int price) {
+import java.io.Serializable;
+
+public class Equipment implements Serializable {
+    private int id;
+    @SerializedName("nom")
+    private String name;
+
+    public Equipment(int id, String name) {
         this.id = id;
         this.name = name;
-        this.price = price;
     }
 
     public int getId() {
@@ -25,13 +28,5 @@ public class Options {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
     }
 }

@@ -7,7 +7,7 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    tools:context=".ReservationEtape2">
+    tools:context=".ReservationFinal">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -43,7 +43,7 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/finalPrice"
+                android:id="@+id/total"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="90dp"
@@ -60,7 +60,6 @@
                 android:layout_marginHorizontal="@dimen/layout_marginHorizontal_button"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/button"
-                android:onClick="validationReserve2"
                 android:text="@string/app_button_name_valide"
                 android:textAllCaps="false"
                 android:textColor="@color/colorWhite"

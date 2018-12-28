@@ -28,13 +28,18 @@
             android:label="Mon profil"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".ReservationEtape1"
-            android:label="Reservation - étape 1 / 2" />
+            android:name=".ReservationItem"
+            android:label="Reservation - étape 1 / 2"
+            android:parentActivityName=".Search"/>
         <activity
-            android:name=".ReservationEtape2"
+            android:name=".ReservationFinal"
             android:label="Reservation - étape 2 / 2"
-            android:parentActivityName=".ReservationEtape1" />
-        <activity android:name=".Search"></activity>
+            android:parentActivityName=".ReservationItem" />
+        <activity
+            android:name=".Search"
+            android:label="Recherche"
+            android:parentActivityName=".MainActivity">
+        </activity>
     </application>
 
 </manifest>
