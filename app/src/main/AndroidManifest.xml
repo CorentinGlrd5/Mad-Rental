@@ -29,6 +29,7 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ReservationItem"
+            android:launchMode="singleTop"
             android:label="Reservation - étape 1 / 2"
             android:parentActivityName=".Search"/>
         <activity

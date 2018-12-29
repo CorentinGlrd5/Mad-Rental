@@ -11,6 +11,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.TextHttpResponseHandler;
 
 import java.io.IOException;
@@ -43,7 +44,11 @@ public class Search extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get("http://s519716619.onlinehome.fr/exchange/madrental/get-vehicules.php", new TextHttpResponseHandler() {
+        RequestParams requestParams = new RequestParams();
+        requestParams.put("datedebut", beginDate);
+        requestParams.put("datefin", endDate);
+        requestParams.put("agemin", 15);
+        client.get("http://s519716619.onlinehome.fr/exchange/madrental/get-vehicules.php", requestParams, new TextHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, String response) {
                 // called when response HTTP status is "200 OK"

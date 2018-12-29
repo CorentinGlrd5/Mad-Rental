@@ -11,10 +11,10 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 public class ReservationAdapter extends RecyclerView.Adapter<ReservationViewHolder> {
-    private List<Vehicle> reservationList;
+    private List<ReservedVehicle> reservationList;
     private Context context;
 
-    public ReservationAdapter (List<Vehicle> reservationList, Context context){
+    public ReservationAdapter (List<ReservedVehicle> reservationList, Context context){
         this.reservationList = reservationList;
         this.context = context;
     }
@@ -28,10 +28,10 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationViewHold
 
     @Override
     public void onBindViewHolder(ReservationViewHolder holder, int position) {
-        Vehicle vehicle = reservationList.get(position);
-        holder.info.setText(vehicle.getName() + " - " + vehicle.getPrice());
-        holder.beginDate.setText("début: " + vehicle.getAgemin());
-        holder.endDate.setText("fin: " + vehicle.getPromotion());
+        ReservedVehicle vehicle = reservationList.get(position);
+        holder.info.setText(vehicle.getName() + " - " + vehicle.getPrice() + " €");
+        holder.beginDate.setText("début: " + vehicle.getBeginDate());
+        holder.endDate.setText("fin: " + vehicle.getEndDate());
         Glide.with(context).load(vehicle.getImage()).into(holder.image);
     }
 

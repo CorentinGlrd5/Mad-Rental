@@ -2,6 +2,7 @@ package com.corentin.mad_rental;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
@@ -35,34 +36,32 @@ public class ReservationItem extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation_item);
+
+
         Intent intent = getIntent();
-
         id = intent.getIntExtra("id", 0);
-
+        name = intent.getStringExtra("name");
+        image = intent.getStringExtra("image");
+        price = intent.getIntExtra("price", 0);
+        categoryco2 = intent.getCharExtra("categoryco2", 'G');
+        equipment = (List<Equipment>) intent.getSerializableExtra("equipments");
+        option = (List<Option>) intent.getSerializableExtra("options");
         diff = intent.getIntExtra("diff", 0);
         beginDate = intent.getStringExtra("beginDate");
         endDate = intent.getStringExtra("endDate");
 
-        Log.i("montag", "diff: "+ diff);
-        Log.i("montag", "beginDate: "+ beginDate);
-        Log.i("montag", "endDate: "+ endDate);
-
-
-        name = intent.getStringExtra("name");
         title = findViewById(R.id.item_title);
         title.setText(name);
 
-        image = intent.getStringExtra("image");
         thumbnail = findViewById(R.id.item_image);
         Glide.with(getApplicationContext()).load(image).into(thumbnail);
 
-        price = intent.getIntExtra("price", 0);
         rent = findViewById(R.id.item_price);
         rent.setText(price + " € / jour");
-        categoryco2 = intent.getCharExtra("categoryco2", 'h');
+
         category = findViewById(R.id.item_category);
         category.setText("" + categoryco2);
-        equipment = (List<Equipment>) intent.getSerializableExtra("equipments");
+
         equipments = findViewById(R.id.item_equipments);
         for (Equipment item: equipment){
             TextView text = new TextView(this);
@@ -70,7 +69,7 @@ public class ReservationItem extends AppCompatActivity {
             text.setText(item.getName());
             equipments.addView(text);
         }
-        option = (List<Option>) intent.getSerializableExtra("options");
+
         options = findViewById(R.id.item_options);
         for (Option item: option){
             LinearLayout option = new LinearLayout(this);
@@ -97,7 +96,12 @@ public class ReservationItem extends AppCompatActivity {
             public void onClick(View v) {
                 List<Integer> optionPrice = new ArrayList<Integer>();
                 Intent intent = new Intent(ReservationItem.this, ReservationFinal.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.putExtra("name", name);
+                intent.putExtra("image", image);
                 intent.putExtra("price", price);
+                intent.putExtra("beginDate", beginDate);
+                intent.putExtra("endDate", endDate);
                 intent.putExtra("diff", diff);
                 for (Option item: option){
                     int id = getResources().getIdentifier(String.valueOf(item.getId()), "id", getPackageName());

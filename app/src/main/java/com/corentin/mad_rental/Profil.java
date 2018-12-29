@@ -42,6 +42,7 @@ public class Profil extends AppCompatActivity {
         editor.commit();
 
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("birthDate", valeurDate);
         startActivity(intent);
 
         String nom = preferences.getString(NOM, valeurNom);
