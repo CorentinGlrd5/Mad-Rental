@@ -96,7 +96,6 @@ public class ReservationItem extends AppCompatActivity {
             public void onClick(View v) {
                 List<Integer> optionPrice = new ArrayList<Integer>();
                 Intent intent = new Intent(ReservationItem.this, ReservationFinal.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intent.putExtra("name", name);
                 intent.putExtra("image", image);
                 intent.putExtra("price", price);
