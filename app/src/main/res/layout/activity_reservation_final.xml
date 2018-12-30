@@ -55,6 +55,7 @@
                 android:textStyle="bold" />
 
             <Button
+                android:id="@+id/reserved"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/layout_height_button"
                 android:layout_marginHorizontal="@dimen/layout_marginHorizontal_button"
