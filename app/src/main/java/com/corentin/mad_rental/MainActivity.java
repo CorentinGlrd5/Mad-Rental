@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private Button reservations, profile, search;
     private EditText beginDate, endDate;
     private String beginDateText, endDateText;
+    String profilNom, profilPrenom, profilDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,16 @@ public class MainActivity extends AppCompatActivity {
                 "font/Roboto-BlackItalic.ttf");
         TextView textView = findViewById(R.id.pageHome_title);
         textView.setTypeface(maFontBold);
+        profilNom = getIntent().getStringExtra("nom");
+        profilPrenom = getIntent().getStringExtra("prenom");
+        profilDate = getIntent().getStringExtra("date");
+
+
+        if (getIntent() != null) {
+            Toast.makeText(this, "Bonjour " + profilNom + " " + profilPrenom + " Vous avez " + profilDate + " ans !", Toast.LENGTH_LONG).show();
+        } else {
+
+        }
 
         reservations = findViewById(R.id.reservations);
         reservations.setOnClickListener(new View.OnClickListener() {
@@ -106,8 +117,8 @@ public class MainActivity extends AppCompatActivity {
             Date lastDate = sdf.parse(date2);
             long diff = lastDate.getTime() - firstDate.getTime();
             days = (int) (long) diff / (1000 * 60 * 60 * 24);
-        } catch (ParseException e){
-            Log.i("ParseException", "diffDate: "+e);
+        } catch (ParseException e) {
+            Log.i("ParseException", "diffDate: " + e);
         }
         return days;
     }

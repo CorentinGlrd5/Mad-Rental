@@ -72,8 +72,8 @@
                 android:layout_marginTop="@dimen/layout_marginTop_EditText_between_EditText"
                 android:background="@drawable/input"
                 android:hint="Date de début de réservation"
-                android:inputType="text"
-                android:paddingLeft="@dimen/layout_PaddingLeft_EditText"
+                android:inputType="date"
+                android:paddingHorizontal="@dimen/layout_PaddingLeft_EditText"
                 android:textSize="@dimen/text_size_button" />
 
             <EditText
@@ -84,8 +84,8 @@
                 android:layout_marginTop="@dimen/layout_marginTop_EditText_between_EditText"
                 android:background="@drawable/input"
                 android:hint="Date de fin de réservation"
-                android:inputType="text"
-                android:paddingLeft="@dimen/layout_PaddingLeft_EditText"
+                android:inputType="date"
+                android:paddingHorizontal="@dimen/layout_PaddingLeft_EditText"
                 android:textSize="@dimen/text_size_button" />
 
             <Button

@@ -38,7 +38,7 @@
                 android:background="@drawable/input"
                 android:hint="Nom"
                 android:inputType="text"
-                android:paddingLeft="@dimen/layout_PaddingLeft_EditText"
+                android:paddingHorizontal="@dimen/layout_PaddingLeft_EditText"
                 android:textSize="@dimen/text_size_button" />
 
             <EditText
@@ -50,7 +50,7 @@
                 android:background="@drawable/input"
                 android:hint="Prénom"
                 android:inputType="text"
-                android:paddingLeft="@dimen/layout_PaddingLeft_EditText"
+                android:paddingHorizontal="@dimen/layout_PaddingLeft_EditText"
                 android:textSize="@dimen/text_size_button" />
 
             <EditText
@@ -62,16 +62,16 @@
                 android:background="@drawable/input"
                 android:hint="Date de naissance"
                 android:inputType="date"
-                android:paddingLeft="@dimen/layout_PaddingLeft_EditText"
+                android:paddingHorizontal="@dimen/layout_PaddingLeft_EditText"
                 android:textSize="@dimen/text_size_button" />
 
             <Button
+                android:id="@+id/validate"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/layout_height_button"
                 android:layout_marginHorizontal="@dimen/layout_marginHorizontal_button"
                 android:layout_marginTop="50dp"
                 android:background="@drawable/button"
-                android:onClick="validerProfil"
                 android:text="@string/app_button_name_valide"
                 android:textAllCaps="false"
                 android:textColor="@color/colorWhite"
