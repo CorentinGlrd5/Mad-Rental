@@ -1,8 +1,10 @@
 package com.corentin.mad_rental;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -22,29 +24,27 @@ public class MainActivity extends AppCompatActivity {
     private Button reservations, profile, search;
     private EditText beginDate, endDate;
     private String beginDateText, endDateText;
-    String profilNom, profilPrenom, profilDate;
+    private Integer age;
+    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent intent = new Intent(MainActivity.this, Reservation.class);
         Typeface maFontBold = Typeface.createFromAsset(getAssets(),
                 "font/Roboto-BlackItalic.ttf");
         TextView textView = findViewById(R.id.pageHome_title);
         textView.setTypeface(maFontBold);
-        profilNom = getIntent().getStringExtra("nom");
-        profilPrenom = getIntent().getStringExtra("prenom");
-        profilDate = getIntent().getStringExtra("date");
-
-
-        if (getIntent() != null) {
-            Toast.makeText(this, "Bonjour " + profilNom + " " + profilPrenom + " Vous avez " + profilDate + " ans !", Toast.LENGTH_LONG).show();
+        preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+        if (preferences.contains("age")) {
+            age = preferences.getInt("age", 6);
         } else {
-
+            SharedPreferences.Editor editor = preferences.edit();
+            age = getIntent().getIntExtra("age", 0);
+            editor.putInt("age", age);
+            editor.commit();
         }
-
         reservations = findViewById(R.id.reservations);
         reservations.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,53 +72,66 @@ public class MainActivity extends AppCompatActivity {
                 endDate = findViewById(R.id.end_date);
                 endDateText = endDate.getText().toString();
                 Integer days = diffDate(beginDateText, endDateText);
-                if (checkDate(beginDateText, endDateText) && days != 0) {
-                    Intent intent = new Intent(MainActivity.this, Search.class);
-                    intent.putExtra("beginDate", beginDateText);
-                    intent.putExtra("endDate", endDateText);
-                    intent.putExtra("diff", days);
-                    startActivity(intent);
+                if (age != 0) {
+                    if (checkDate(beginDateText, endDateText) && days != 0) {
+                        Intent intent = new Intent(MainActivity.this, Search.class);
+                        intent.putExtra("beginDate", beginDateText);
+                        intent.putExtra("endDate", endDateText);
+                        intent.putExtra("diff", days);
+                        intent.putExtra("age", age);
+                        startActivity(intent);
+                    }
                 } else {
-                    Toast toast = Toast.makeText(MainActivity.this, "Date non valide", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(MainActivity.this, "Veuillez renseigner votre profil", Toast.LENGTH_LONG);
                     toast.show();
                 }
             }
         });
     }
 
-
-    public Boolean checkDate(String date1, String date2) {
+    public Boolean checkDate(String firstDate, String lastDate) {
         String regex = "^(1[0-9]|0[1-9]|3[0-1]|2[1-9])/(0[1-9]|1[0-2])/[0-9]{4}$";
-        if (date1 == null || !date1.matches(regex) || date2 == null || !date2.matches(regex)) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        if (!firstDate.matches(regex)) {
+            beginDate.setError("Mauvais format de date");
             return false;
-        } else {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            try {
-                Date firstDate = sdf.parse(date1);
-                Date lastDate = sdf.parse(date2);
-                Date date = new Date();
-                String today = sdf.format(date);
-                if (firstDate.compareTo(lastDate) >= 0 || firstDate.compareTo(sdf.parse(today)) < 0 || lastDate.compareTo(sdf.parse(today)) < 0) {
-                    return false;
-                } else {
-                    return true;
-                }
-            } catch (ParseException e) {
+        }
+        if (!lastDate.matches(regex)){
+            endDate.setError("Mauvais format de fate");
+            return false;
+        }
+        try {
+            Date beginDateParsed = sdf.parse(firstDate);
+            Date endDateParsed = sdf.parse(lastDate);
+            Date now = new Date();
+            Date today = sdf.parse(sdf.format(now));
+            if (beginDateParsed.compareTo(endDateParsed) >= 0) {
+                endDate.setError("Les dates ne se suivent pas");
                 return false;
+            } else if (beginDateParsed.compareTo(today) < 0) {
+                beginDate.setError("Date dépassée");
+                return false;
+            } else if (endDateParsed.compareTo(today) < 0){
+                endDate.setError("Date dépassée");
+                return false;
+            } else {
+                return true;
             }
+        } catch (ParseException e) {
+            return false;
         }
     }
 
-    public Integer diffDate(String date1, String date2) {
+    public Integer diffDate(String firstDate, String lastDate) {
         Integer days = 0;
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         try {
-            Date firstDate = sdf.parse(date1);
-            Date lastDate = sdf.parse(date2);
-            long diff = lastDate.getTime() - firstDate.getTime();
-            days = (int) (long) diff / (1000 * 60 * 60 * 24);
+            Date beginDate = sdf.parse(firstDate);
+            Date endDate = sdf.parse(lastDate);
+            long diff = (endDate.getTime() - beginDate.getTime())/1000/3600/24;
+            days = (int) diff;
         } catch (ParseException e) {
-            Log.i("ParseException", "diffDate: " + e);
+            Log.i("ParseException", "Exception: "+e);
         }
         return days;
     }

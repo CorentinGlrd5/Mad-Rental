@@ -38,6 +38,8 @@ public class Search extends AppCompatActivity {
     private View overlay;
     private Switch sw;
     private Boolean click;
+    private Integer age;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +48,7 @@ public class Search extends AppCompatActivity {
         diff = intent.getIntExtra("diff", 0);
         beginDate = intent.getStringExtra("beginDate");
         endDate = intent.getStringExtra("endDate");
+        age = intent.getIntExtra("age", 0);
 
         filter = findViewById(R.id.filter);
         sw = findViewById(R.id.promo_switch);
@@ -97,7 +100,7 @@ public class Search extends AppCompatActivity {
         RequestParams requestParams = new RequestParams();
         requestParams.put("datedebut", beginDate);
         requestParams.put("datefin", endDate);
-        requestParams.put("agemin", 15);
+        requestParams.put("agemin", age);
         requestParams.put("promotion", promotion);
         client.get("http://s519716619.onlinehome.fr/exchange/madrental/get-vehicules.php", requestParams, new TextHttpResponseHandler() {
             @Override

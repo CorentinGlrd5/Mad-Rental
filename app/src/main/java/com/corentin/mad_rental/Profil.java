@@ -19,9 +19,10 @@ import java.util.Date;
 public class Profil extends AppCompatActivity {
 
     private Button validate;
-    private EditText nom, prenom, dateDeNaissance;
-    private String nomText, prenomText, dateText;
-    private Integer age, dateNaissance;
+    private EditText lastName, firstName, birthDay;
+    private String lastNameText, firstNameText, birthDayText;
+    private Integer age;
+    private SharedPreferences preferences;
 
 
     @Override
@@ -29,34 +30,35 @@ public class Profil extends AppCompatActivity {
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil);
-        Log.i("onCreate age : ", String.valueOf(age));
-        Log.i("onCreate dateNaissan: ", String.valueOf(dateNaissance));
+        preferences = PreferenceManager.getDefaultSharedPreferences(Profil.this);
+
+        lastName = findViewById(R.id.Nom);
+        firstName = findViewById(R.id.Prenom);
+        birthDay = findViewById(R.id.Date);
+
+        if (preferences.contains("lastname") && preferences.contains("firstname") && preferences.contains("birthday")) {
+            lastName.setText(preferences.getString("lastname", "Nom"));
+            firstName.setText(preferences.getString("firstname", "Prenom"));
+            birthDay.setText(preferences.getString("birthday", "Date de naissance"));
+        }
 
         validate = findViewById(R.id.validate);
         validate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nom = findViewById(R.id.Nom);
-                nomText = nom.getText().toString();
-                prenom = findViewById(R.id.Prenom);
-                prenomText = prenom.getText().toString();
-                dateDeNaissance = findViewById(R.id.Date);
-                dateText = dateDeNaissance.getText().toString();
-                age = checkDate(dateText);
-                if (checkValues(nomText, prenomText, dateText) && age != 0) {
-                    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(Profil.this);
+                lastNameText = lastName.getText().toString();
+                firstNameText = firstName.getText().toString();
+                birthDayText = birthDay.getText().toString();
+                age = getAge(birthDayText);
+                if (checkValues(lastNameText, firstNameText, birthDayText) && age != 0) {
                     SharedPreferences.Editor editor = preferences.edit();
-                    editor.putString("Name", nomText);
-                    editor.putString("LastName", prenomText);
+                    editor.putString("lastname", lastNameText);
+                    editor.putString("firstname", firstNameText);
+                    editor.putString("birthday", birthDayText);
                     editor.putInt("age", age);
                     editor.commit();
-                    dateNaissance = preferences.getInt("age", age);
-                    Log.i("onClick: ", String.valueOf(dateNaissance));
-                    int valeur = preferences.getInt("age", age);
                     Intent intent = new Intent(Profil.this, MainActivity.class);
-                    intent.putExtra("nom", nomText);
-                    intent.putExtra("prenom", prenomText);
-                    intent.putExtra("date", dateText);
+                    intent.putExtra("age", age);
                     startActivity(intent);
                 } else {
                     Toast toast = Toast.makeText(Profil.this, "Champs non remplis", Toast.LENGTH_LONG);
@@ -76,7 +78,7 @@ public class Profil extends AppCompatActivity {
         }
     }
 
-    public Integer checkDate(String dateText) {
+    public Integer getAge(String dateText) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Integer age = 0;
         try {
