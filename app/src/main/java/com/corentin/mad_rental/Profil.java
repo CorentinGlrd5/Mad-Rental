@@ -50,7 +50,7 @@ public class Profil extends AppCompatActivity {
                 firstNameText = firstName.getText().toString();
                 birthDayText = birthDay.getText().toString();
                 age = getAge(birthDayText);
-                if (checkValues(lastNameText, firstNameText, birthDayText) && age != 0) {
+                if (checkFormat(lastNameText, firstNameText, birthDayText) && age >= 1 && age <= 130) {
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("lastname", lastNameText);
                     editor.putString("firstname", firstNameText);
@@ -61,21 +61,29 @@ public class Profil extends AppCompatActivity {
                     intent.putExtra("age", age);
                     startActivity(intent);
                 } else {
-                    Toast toast = Toast.makeText(Profil.this, "Champs non remplis", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(Profil.this, "Veuillez renseigner votre profil", Toast.LENGTH_LONG);
                     toast.show();
                 }
             }
         });
     }
 
-    public Boolean checkValues(String nom, String prenom, String dateDeNaissance) {
+    public Boolean checkFormat(String nom, String prenom, String dateDeNaissance) {
         String regexText = "^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$";
         String regexDate = "^(1[0-9]|0[1-9]|3[0-1]|2[1-9])/(0[1-9]|1[0-2])/[0-9]{4}$";
-        if (nom == null || !nom.matches(regexText) || prenom == null || !prenom.matches(regexText) || dateDeNaissance == null || !dateDeNaissance.matches(regexDate)) {
+        if (!nom.matches(regexText)) {
+            lastName.setError("Erreur format");
             return false;
-        } else {
-            return true;
         }
+        if (!prenom.matches(regexText)) {
+            firstName.setError("Erreur format");
+            return false;
+        }
+        if (!dateDeNaissance.matches(regexDate)) {
+            birthDay.setError("Mauvais format de date");
+            return false;
+        }
+        return true;
     }
 
     public Integer getAge(String dateText) {
@@ -89,6 +97,7 @@ public class Profil extends AppCompatActivity {
             double years = (dateToday.getTime() - firstDate.getTime()) / 1000 / 3600 / 24 / 365.25;
             age = (int) Math.floor(years);
         } catch (ParseException e) {
+            Log.i("ParseException", "Exception: " + e);
         }
         return age;
     }

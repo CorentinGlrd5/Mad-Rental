@@ -15,24 +15,27 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:launchMode="singleTop"
-            android:label="MadRental">
+            android:label="MadRental"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Reservation" />
+        <activity
+            android:name=".Reservation"
+            android:label="Mes Réservations"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".Profil"
             android:label="Mon profil"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ReservationItem"
-            android:launchMode="singleTop"
             android:label="Reservation - étape 1 / 2"
-            android:parentActivityName=".Search"/>
+            android:launchMode="singleTop"
+            android:parentActivityName=".Search" />
         <activity
             android:name=".ReservationFinal"
             android:label="Reservation - étape 2 / 2"
@@ -40,8 +43,7 @@
         <activity
             android:name=".Search"
             android:label="Recherche"
-            android:parentActivityName=".MainActivity">
-        </activity>
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>

@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
             beginDate.setError("Mauvais format de date");
             return false;
         }
-        if (!lastDate.matches(regex)){
+        if (!lastDate.matches(regex)) {
             endDate.setError("Mauvais format de fate");
             return false;
         }
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
             } else if (beginDateParsed.compareTo(today) < 0) {
                 beginDate.setError("Date dépassée");
                 return false;
-            } else if (endDateParsed.compareTo(today) < 0){
+            } else if (endDateParsed.compareTo(today) < 0) {
                 endDate.setError("Date dépassée");
                 return false;
             } else {
@@ -128,10 +128,10 @@ public class MainActivity extends AppCompatActivity {
         try {
             Date beginDate = sdf.parse(firstDate);
             Date endDate = sdf.parse(lastDate);
-            long diff = (endDate.getTime() - beginDate.getTime())/1000/3600/24;
+            long diff = (endDate.getTime() - beginDate.getTime()) / 1000 / 3600 / 24;
             days = (int) diff;
         } catch (ParseException e) {
-            Log.i("ParseException", "Exception: "+e);
+            Log.i("ParseException", "Exception: " + e);
         }
         return days;
     }
